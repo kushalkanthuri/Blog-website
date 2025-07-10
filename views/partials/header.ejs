@@ -1,0 +1,21 @@
+<header class="header">
+  <a href="/" class="header__logo">Blog Webstie</a>
+  <nav class="header__nav">
+    <ul>
+      <li>
+        <a href="/home" class="<%= isActiveRoute("/",currentRoute) %>">Home</a>
+      </li>
+      <li>
+        <a href="/about" class="<%= isActiveRoute("/",currentRoute) %></a>">About</a>
+      </li>
+      <li>
+        <a href="/contact" class="<%= isActiveRoute("/",currentRoute) %></a>">Contact Us</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="header__button">
+    <button class="searchBtn" aria-expanded="false">
+      Search<i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </div>
+</header>
