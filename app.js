@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const methodOverride = require("method-override");
-const { isActiveRoute } = require("./server/helpers/routerHelpers");
+// const { isActiveRoute } = require("./server/helpers/routerHelpers");
 
 const connectDB = require("./server/config/db");
 
@@ -43,7 +43,7 @@ app.use(expressLayout);
 app.set("layout", "./layouts/main");
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.locals.isActiveRoute = isActiveRoute;
+// app.locals.isActiveRoute = isActiveRoute;
 //navitage to main file  in server/routes folder
 app.use("/", require("./server/routes/main"));
 app.use("/", require("./server/routes/admin"));

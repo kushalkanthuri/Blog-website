@@ -113,7 +113,7 @@ router.get("/", async (req, res) => {
       data,
       current: page,
       nextPage: hasNextPage ? nextPage : null,
-      currentRoute: "/",
+      // currentRoute: "/",
     });
   } catch (error) {
     console.log(error);
@@ -129,9 +129,9 @@ router.get("/post/:id", async (req, res) => {
     const locals = {
       title: data.title,
       description: "Welcome to blogging website",
-      currentRoute: `/post:/${slug}`,
+      // currentRoute: `/post:/${slug}`,
     };
-    res.render("post", { locals, data, currentRoute });
+    res.render("post", { locals, data });
   } catch (error) {
     console.log(error);
   }
@@ -163,8 +163,40 @@ router.post("/search", async (req, res) => {
 
 router.get("/about", (req, res) => {
   res.render("about", {
-    currentRoute: "/about",
+    // ntRoute: "/about",curre
   });
+});
+
+//Home route - root page
+router.get("/home", (req, res) => {
+  res.redirect("/");
+});
+
+//contact-us  route - root page
+router.get("/contact", (req, res) => {
+  res.render("contact");
+});
+
+//post - contact us route
+//Getting customer deatails
+const Contact = require("../models/contact");
+router.post("/contact", async (req, res) => {
+  try {
+    const { name, email, subject, message } = req.body;
+
+    const newContact = new Contact({
+      name,
+      email,
+      subject,
+      message,
+    });
+
+    await newContact.save();
+    res.send("Message sent ");
+  } catch (err) {
+    console.error("Error saving contact:", err);
+    res.status(500).send("Something went wrong. Please try again.");
+  }
 });
 
 module.exports = router;

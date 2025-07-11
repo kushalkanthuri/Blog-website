@@ -171,7 +171,8 @@ router.put("/edit-post/:id", authMiddleware, async (req, res) => {
       updatedAt: Date.now(),
     });
 
-    res.redirect(`/edit-post/${req.params.id}`);
+    // res.redirect(`/edit-post/${req.params.id}`);
+    res.redirect("/dashboard");
   } catch (error) {
     console.log("Error updating post:", error);
     res.status(500).send("Internal Server Error");
@@ -195,4 +196,5 @@ router.get("/logout", (req, res) => {
   res.clearCookie("token");
   res.redirect("/");
 });
+
 module.exports = router;
